@@ -91,6 +91,7 @@ export default class wordRelay {
                 "&req_type=json"
             , {
             mode: 'no-cors',
+            method: 'GET'
         });
 
         response.then(response => {
