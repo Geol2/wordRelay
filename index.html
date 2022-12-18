@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/index.css" />
+    </head>
+
+    <body>
+        <div class="component">
+            <div class="display">
+                <div class="display-word">
+
+                </div>
+                <div class="user-component">
+                    
+                    <div class="user user-1"> 
+                        1P
+                        <div class="user-win"></div>
+                    </div>
+
+                    <div class="user user-2">
+                        2P
+                        <div class="user-win"></div>
+                    </div>    
+                </div>
+            </div>
+            
+            <div class="chatting">
+                <div class="chat-all" id="chatAll">
+
+                </div>
+
+                <div class="chat-input">
+                    <div class="chat-wrap">
+                        <input type="text" name="word" id="word" value="" autofocus />
+                        <input type="button" name="submit" id="submit" value="보내기" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            document.getElementById("word").focus();
+        </script>
+        
+        <script type="module"> 
+            import {drawStart} from "./js/index.js";
+            import WordRelay from "./js/wordRelay.js";
+            
+            let startWordData = ["무궁화", "천국", "장군", "식탁", "머리", "연극", "개발", "늑대", "주택", "개나리"];
+            
+            let oneOfStartWord = drawStart(startWordData);
+            let test1 = 1;
+
+            // 객체 생성
+            const wordRelay = new WordRelay(oneOfStartWord);
+            wordRelay.setWord(oneOfStartWord);
+            wordRelay.setUIState();
+            wordRelay.setLimitTime(7000);
+
+            wordRelay.flowTime();
+
+            /* event */
+            document.getElementById("submit").addEventListener('onclick', onSubmit);
+            // document.getElementById("reload").addEventListener('onclick', fReload);
+
+            const node = document.getElementById("word");
+            node.addEventListener("keyup", function (event) {
+                if(event.key === "Enter") {
+                    onSubmit();
+                }
+            });
+            /* event */
+
+            function onSubmit() {
+                // console.log(test1);
+                let word = document.getElementById("word").value;
+                if( wordRelay.is(word) ) {
+
+                    wordRelay.draw(word);
+                    wordRelay.setPrevWord(word);
+                    wordRelay.changeState();
+                    wordRelay.removeTime();
+                    wordRelay.flowTime();
+
+                } else { 
+                    wordRelay.warning();
+                }
+
+                console.log(wordRelay);
+            }
+
+            function reload() {
+                console.log(1);
+                location.reload();
+            }
+        </script>
+    </body>
+</html>

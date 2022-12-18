@@ -1,0 +1,102 @@
+body {
+    margin: 0;
+}
+
+input[type="text" i] {
+    padding: 0px 0px;
+    border-width: 0;
+}
+
+input:focus {
+    outline: none;
+}
+
+.component {
+    background-color: #2ecc71;
+    width: 100%;
+    height: 100vh;
+}
+
+
+.display {
+    height: 80%;
+}
+
+.display-word {
+    background-color: #fff;
+    height: 10vh;
+    width: 40ch;
+    border-radius: 5px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    text-align: center;
+
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+}
+
+.user-component {
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user {
+    width: 250px;
+    height: 250px;
+    background-color: #34495e;
+
+    margin-right: 3px;
+    margin-left: 3px;
+
+    border-radius: 50%;
+    color: #fff;
+    text-align: center;
+}
+
+.chatting {
+    background-color: #fff;
+    width: 90%;
+    height: 20%;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+
+    display: flex;;
+}
+
+.chat-all {
+
+}
+
+.chat-input {
+    align-self: flex-end;
+    width: 100%;
+}
+
+.chat-wrap {
+    display: flex;
+    justify-content: center;
+}
+
+#word {
+    width: 90%;
+    height: 30px;
+
+    border: solid 3px #27ae60;
+    border-radius: 5px;
+    margin-right: 3px;
+}
+
+#submit {
+    background-color: #fff;
+    color: #2c3e50;
+    border: solid 3px #27ae60;
+    border-radius: 5px;
+}
