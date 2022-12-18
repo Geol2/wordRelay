@@ -85,12 +85,11 @@ export default class wordRelay {
     }
 
     isReadAPI(word) {
-        fetch("https://stdict.korean.go.kr/api/search.do?" + new URLSearchParams({
-            key: this.key,
-            q: word,
-            req_type: "json"
-        }), {
-            method: 'GET',
+        fetch("https://stdict.korean.go.kr/api/search.do?" +
+                "key=" + this.key + 
+                "&q=" + word +
+                "&req_type=json"
+            ), {
             mode: 'no-cors',
         }
         ).then(response => {
