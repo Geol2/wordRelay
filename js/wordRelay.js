@@ -82,6 +82,16 @@ export default class wordRelay {
             return false;
         }
     }
+
+    isReadAPI(word) {
+        fetch("https://stdict.korean.go.kr/api/search.do", {method: 'GET'})
+        .then(response => {
+            return response.json();
+          })
+          .then(data => {
+            console.log(data);
+          });
+    }
     
     isUseWord(word) {
         if( this.usedWord.includes(word) ) {
@@ -101,7 +111,8 @@ export default class wordRelay {
     is(word) {
         if( this.isMatchWord(word) 
             && this.isUseWord(word)
-            && this.isValidLength(word) ){
+            && this.isValidLength(word)
+            && this.isReadAPI(word) ){
             return true;
         }
         return false;
