@@ -90,10 +90,13 @@ export default class wordRelay {
             q: word
         }), {
             method: 'GET',
-            mode: 'no-cors'
+            mode: 'no-cors',
+            header: {
+                "Content-Type" : "application/json"
+            }
         }
         ).then(response => {
-            return response.json();
+            console.log( response.json() );
           })
         .then(data => {
             console.log(data);
