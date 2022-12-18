@@ -1,5 +1,6 @@
 export default class wordRelay {
     constructor(startWord) {
+        this.key = "29EEF941DFEEBC9728330FD6D057F6BF";
         this.startWord = startWord;
         
         this.isStart = true;
@@ -84,13 +85,19 @@ export default class wordRelay {
     }
 
     isReadAPI(word) {
-        fetch("https://stdict.korean.go.kr/api/search.do", {method: 'GET'})
-        .then(response => {
+        fetch("https://stdict.korean.go.kr/api/search.do?" + new URLSearchParams({
+            key: this.key,
+            q: word
+        }), {
+            method: 'GET',
+            mode: 'no-cors'
+        }
+        ).then(response => {
             return response.json();
           })
-          .then(data => {
+        .then(data => {
             console.log(data);
-          });
+        });
     }
     
     isUseWord(word) {
@@ -102,7 +109,7 @@ export default class wordRelay {
     }
 
     isValidLength(word) {
-        if(word.length >= 2) {
+        if(word.length >= 2 && word.length <= 20) {
             return true;
         }
         return false;
