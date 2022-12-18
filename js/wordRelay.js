@@ -1,6 +1,6 @@
 export default class wordRelay {
     constructor(startWord) {
-        this.key = "80A4E87AF0F0C80B0256891A062ADB72";
+        this.key = "29EEF941DFEEBC9728330FD6D057F6BF";
         this.startWord = startWord;
         
         this.isStart = true;
