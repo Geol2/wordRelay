@@ -92,7 +92,7 @@ export default class wordRelay {
             ), {
             mode: 'no-cors',
         }
-        ).then(response => {
+        .then(response => {
             debugger;
             console.log( response );
           })
