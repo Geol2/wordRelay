@@ -96,7 +96,7 @@ export default class wordRelay {
             }
         }
         ).then(response => {
-            console.log( response.json() );
+            console.log( response );
           })
         .then(data => {
             console.log(data);
