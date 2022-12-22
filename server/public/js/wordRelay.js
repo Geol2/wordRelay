@@ -77,7 +77,6 @@ export default class wordRelay {
         let firstWordOfNextWord = nextWord.charAt(0);
 
         if( endWordOfPrevWord == firstWordOfNextWord) {
-            // fetch(); 인증키 이슈??
             return true;
         } else {
             return false;
@@ -85,23 +84,19 @@ export default class wordRelay {
     }
 
     isReadAPI(word) {
-        const response = fetch("https://stdict.korean.go.kr/api/search.do?" +
-                "key=" + this.key + 
-                "&q=" + word +
-                "&req_type=json"
-            , {
-            mode: 'no-cors',
-            method: 'GET'
-        });
+        let res = false;
+        
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "/getApi?q=" + word, false);
+        xhr.send();
 
-        response.then(response => {
-            debugger;
-            console.log(response)
-        });
-        response.catch(error => {
-            debugger;
-            console.log(error);
-        });
+        if(xhr.readyState === 4 && xhr.status === 200) {
+            if( JSON.parse( xhr.response ).is ) {
+                res = true;
+            }
+        }
+
+        return res;
     }
     
     isUseWord(word) {
@@ -113,17 +108,17 @@ export default class wordRelay {
     }
 
     isValidLength(word) {
-        if(word.length >= 2 && word.length <= 20) {
+        if( (word.length >= 2) && (word.length <= 20) ) {
             return true;
         }
         return false;
     }
     
     is(word) {
-        if( this.isMatchWord(word) 
+        if( this.isReadAPI(word)
+            && this.isMatchWord(word) 
             && this.isUseWord(word)
-            && this.isValidLength(word)
-            && this.isReadAPI(word) ){
+            && this.isValidLength(word) ){
             return true;
         }
         return false;
@@ -131,6 +126,7 @@ export default class wordRelay {
 
     draw(word) {
         document.getElementsByClassName("display-word")[0].innerText = word;
+        document.getElementById("word").setAttribute("style", "border:solid 3px #27ae60");
         document.getElementById("word").value = '';
     }
     
