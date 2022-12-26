@@ -6,6 +6,7 @@
 
     <body>
         <div class="component">
+            <div class="snowflake"></div>
             <div class="display">
                 <div class="display-word">
 
@@ -37,10 +38,13 @@
                 </div>
             </div>
         </div>
-        <script>
+        
+        <script type="text/javascript">
             document.getElementById("word").focus();
         </script>
         
+        <script type="text/javascript" src="/js/snow.js"> </script>
+
         <script type="module"> 
             import {drawStart} from "./js/index.js";
             import WordRelay from "./js/wordRelay.js";
